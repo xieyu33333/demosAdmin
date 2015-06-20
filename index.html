@@ -1,0 +1,60 @@
+<html id="html">
+    <head>
+        <meta charset='utf-8'>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no" />
+        <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.css">
+        <link rel="stylesheet" href="libs/simple_pc.css">
+        <script src="libs/iToolkit_pc.js"></script>
+        <style>
+            iframe {
+                width: 100%;
+                min-height: 450px;
+                border-radius: 3px;
+                border: 1px solid #e5e5e5;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Demos Admin</a>
+            </div>
+          </div>
+        </nav>
+        <div class="col col-xs-2">
+            <tree></tree>
+        </div>
+        <div class="col col-xs-10">
+            <div class="col col-xs-6">
+                <h5>源代码：</h5>
+                <iframe src="" id="sourceCode"></iframe>
+            </div>
+            <div class="col col-xs-6">
+                <h5>执行结果：</h5>
+                <iframe src="" id="result"></iframe>
+            </div>
+        </div>
+    </body>
+    <script>
+        utils.httpGet('/fileList', {}, function(data) {
+            var treeOpts = {
+                data: data,
+                root: true,
+                handleData: true,
+                name: 'fileName',
+                onLeftClick: function(item, target) {
+                    var sourceCodeArea = document.querySelector('#sourceCode');
+                    sourceCodeArea.src = item.path + '?source_code=1';
+
+                    var resultArea = document.querySelector('#result');
+                    resultArea.src = item.path + '?result=1';
+                }
+            }
+            riot.mount('tree', treeOpts);
+        })
+        
+    </script>
+</html>
