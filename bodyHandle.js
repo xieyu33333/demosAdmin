@@ -1,3 +1,6 @@
+var Remarkable = require('remarkable');
+var md = new Remarkable();
+
 module.exports = {
     insertPrism: function(body) {
         var css = '<link href="/libs/prism.css" rel="stylesheet">';
@@ -13,5 +16,14 @@ module.exports = {
         else if (type === 'html') {
             return '<pre><code class="language-markup"><script type="prism-html-markup">' + body + '</script></code></pre>';
         }
+    },
+
+    addScript: function(body) {
+        return '<script>' + body + '</script>';
+    },
+
+    transMarkDown: function(body) {
+        return md.render(body);
     }
+
 }

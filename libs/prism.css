@@ -4,7 +4,9 @@
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
  * @author ocodia
  */
-
+body {
+	font-size: 14px;
+}
 code[class*="language-"],
 pre[class*="language-"] {
 	color: #f8f8f2;

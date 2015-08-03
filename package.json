@@ -9,6 +9,7 @@
   "author": "xieyu33333",
   "license": "ISC",
   "dependencies": {
-    "koa": "x"
+    "koa": "x",
+    "remarkable": "x"
   }
 }
